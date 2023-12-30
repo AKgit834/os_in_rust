@@ -7,5 +7,5 @@ target="specs.json"
 runner = "bootimage runner"
 
 [unstable]
-built-std-features=["compiler-builtins-mem"]
+build-std-features = ["compiler-builtins-mem"]
 build-std = ["core", "compiler_builtins"]
