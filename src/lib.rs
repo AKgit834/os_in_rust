@@ -16,7 +16,7 @@ pub trait Testable
 }
 
 
-impl<T> for Testable 
+impl<T>  Testable for T
 where
 T: Fn(),
 
@@ -29,11 +29,11 @@ T: Fn(),
     }
 }
 
-pub fn test_panic_handler(info: String)
+pub fn test_panic_handler(info: &PanicInfo) -> !
 {
     serial_println!("[Failed]");
     serial_println!("Error: {}",info);
-    qemu_exit(QemuExitCode::Failed);
+    exit_qemu(QemuExitCode::Failed);
     loop {}
 }
 
