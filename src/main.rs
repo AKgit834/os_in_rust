@@ -7,12 +7,22 @@
 use core::panic::PanicInfo;
 use os::println;
 
-
+fn stack_overflow(){
+    stack_overflow();
+}
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
+
+    os::init();
+
     println!("Hello Aaditya{}", "!");
 
+    stack_overflow();
+
+    /*unsafe{
+        *(0xdeadbeef as *mut u8) = 42;
+    };*/
 
     #[cfg(test)]
     test_main();
