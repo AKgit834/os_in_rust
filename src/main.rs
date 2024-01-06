@@ -7,9 +7,7 @@
 use core::panic::PanicInfo;
 use os::println;
 
-fn stack_overflow(){
-    stack_overflow();
-}
+
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
@@ -17,17 +15,13 @@ pub extern "C" fn _start() -> ! {
     os::init();
 
     println!("Hello Aaditya{}", "!");
+    println!("\nHow are you doing 🦀");
 
-    stack_overflow();
-
-    /*unsafe{
-        *(0xdeadbeef as *mut u8) = 42;
-    };*/
-
+        
     #[cfg(test)]
     test_main();
-
-    loop {}
+    
+    os::hlt_loop();
 }
 
 /// This function is called on panic.
@@ -35,7 +29,7 @@ pub extern "C" fn _start() -> ! {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    os::hlt_loop();
 }
 
 #[cfg(test)]
