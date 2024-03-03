@@ -5,7 +5,7 @@ use crate::print;
 use lazy_static::lazy_static;
 use crate::gdt;
 use pic8259::ChainedPics;
-use spin;
+//use spin;
 
 
 lazy_static!

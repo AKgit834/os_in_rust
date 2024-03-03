@@ -83,8 +83,9 @@ pub fn hlt_loop() -> ! {
 #[cfg(test)]
 entry_point!(test_kernel_main);
 
+//enrty point for cargo test 
 #[cfg(test)]
-fn test_kernel_main(boot_info: &'static BootInfo) -> ! 
+fn test_kernel_main(_boot_info: &'static BootInfo) -> ! 
 {
     init();
     test_main();
